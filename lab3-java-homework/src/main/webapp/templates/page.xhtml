@@ -1,0 +1,17 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<f:view contentType="text/html" encoding="UTF-8">
+    <h:head>
+        <title>#{msg['appName']}: #{pageTitle}</title>
+    </h:head>
+    <h:body>
+        <ui:include src="header.xhtml"/>
+        <ui:include src="menu.xhtml"/>
+        <div id="content">
+            <ui:insert name="content">#{msg['viewPage']}</ui:insert>
+        </div>
+        <ui:include src="footer.xhtml"/>
+    </h:body>
+</f:view>
+</html>

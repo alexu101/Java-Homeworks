@@ -1,0 +1,24 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/dataEdit.xhtml">
+    <ui:define name="editFields">
+        <h:outputLabel for="clientId" value="#{msg['order.clientid']}" />
+        <h:inputText id="clientId" value="#{ordersBean.selectedOrder.clientId}" required="true" />
+
+        <h:outputLabel for="productId" value="#{msg['order.productid']}" />
+        <h:inputText id="productId" value="#{ordersBean.selectedOrder.productId}" required="true" />
+
+        <h:outputLabel for="quantity" value="#{msg['order.quantity']}" />
+        <h:inputText id="quantity" value="#{ordersBean.selectedOrder.quantity}" required="true" />
+
+        <h:outputLabel for="shippingDate" value="#{msg['order.shipping_date']}" />
+        <p:calendar id="shippingDate" value="#{ordersBean.selectedOrder.shippingDate}" required="true" pattern="yyyy-MM-dd" converter="dateConverter" />
+
+
+
+    </ui:define>
+
+</ui:composition></html>

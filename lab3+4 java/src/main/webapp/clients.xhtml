@@ -1,0 +1,55 @@
+<ui:composition template="/templates/dataView.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <ui:param name="bean" value="#{clientsBean}"/>
+    <ui:param name="newItem" value="createNewClient"/>
+    <ui:param name="selectedItem" value="#{clientsBean.selectedClient}"/>
+    <ui:param name="newItemCreate" value="#{clientsBean.createNewClient()}"/>
+    <ui:param name="itemList" value="#{clientsBean.clients}"/>
+    <ui:param name="addEntityBtn" value="#{msg['client.add']}"/>
+    <ui:param name="addEntityDialog" value="#{msg['client.edit']}"/>
+    <ui:define name="columns">
+        <p:column headerText="#{msg['client.id']}">
+            <h:outputText value="#{item.id}" />
+        </p:column>
+        <p:column headerText="#{msg['client.name']}">
+            <h:outputText value="#{item.name}" />
+        </p:column>
+        <p:column headerText="#{msg['client.email']}">
+            <h:outputText value="#{item.email}" />
+        </p:column>
+        <p:column headerText="#{msg['client.phone']}">
+            <h:outputText value="#{item.phone}" />
+        </p:column>
+        <p:column headerText="#{msg['client.positionx']}">
+            <h:outputText value="#{item.position_x}" />
+        </p:column>
+        <p:column headerText="#{msg['client.positiony']}">
+            <h:outputText value="#{item.position_y}" />
+        </p:column>
+        <p:column headerText="#{msg['order.shipping_window_start']}">
+            <h:outputText value="#{item.startTime}" />
+        </p:column>
+        <p:column headerText="#{msg['order.shipping_window_end']}">
+            <h:outputText value="#{item.endTime}" />
+        </p:column>
+        <p:column headerText="#{msg['actions']}">
+            <p:commandButton value="#{msg['client.edit']}" icon="pi pi-pencil"
+                             actionListener="#{clientsBean.createEditClient}"
+                             update="editDialog"
+                             oncomplete="PF('editDialog').show()"
+                             process="@this"
+                             immediate="true">
+                <f:setPropertyActionListener value="#{item}" target="#{clientsBean.selectedClient}" />
+            </p:commandButton>
+        </p:column>
+    </ui:define>
+    <ui:param name="saveEditAction" value="saveClient"/>
+
+    <ui:define name="editFile">
+        <ui:include src="/editClients.xhtml"/>
+    </ui:define>
+</ui:composition>

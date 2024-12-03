@@ -1,0 +1,19 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/dataEdit.xhtml">
+    <ui:define name="editFields">
+        <h:outputLabel for="name" value="Product Name:" />
+        <h:inputText id="name" value="#{productsBean.selectedProduct.name}" required="true" />
+
+        <h:outputLabel for="price" value="Product Price:" />
+        <h:inputText id="price" value="#{productsBean.selectedProduct.price}" required="true" />
+
+        <h:outputLabel for="description" value="Product Quantity:" />
+        <h:inputTextarea id="description" value="#{productsBean.selectedProduct.quantity}" required="true" />
+
+    </ui:define>
+
+</ui:composition></html>

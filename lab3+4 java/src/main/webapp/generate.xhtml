@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/page.xhtml">
+<ui:define name="content">
+<h:form>
+    <p:panel header="Data Generation" style="width: 400px; margin: 0 auto;">
+        <p:panelGrid columns="2" columnClasses="label,value" style="width: 100%;">
+            <h:outputLabel for="nrClients" value="Number of Clients:"/>
+            <p:inputText id="nrClients" value="#{generatorBean.nrClients}" />
+
+            <h:outputLabel for="nrOrders" value="Max Orders per Client:"/>
+            <p:inputText id="nrOrders" value="#{generatorBean.nrOrders}" />
+
+            <h:outputLabel for="maxX" value="Max value for X for Client:"/>
+            <p:inputText id="maxX" value="#{generatorBean.maxX}" />
+
+            <h:outputLabel for="maxY" value="Max value for Y for Client:"/>
+            <p:inputText id="maxY" value="#{generatorBean.maxY}" />
+        </p:panelGrid>
+
+        <p:commandButton value="Generate"
+                         action="#{generatorBean.generateData}"
+                         update="@form"
+                         style="margin-top: 10px;"/>
+    </p:panel>
+</h:form>
+</ui:define>
+</ui:composition>
+</html>

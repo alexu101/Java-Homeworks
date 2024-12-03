@@ -1,0 +1,25 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/dataEdit.xhtml">
+    <ui:define name="editFields">
+        <h:outputLabel for="name" value="Name:" />
+        <h:inputText id="name" value="#{clientsBean.selectedClient.name}" required="true" />
+        <h:outputLabel for="email" value="Email:" />
+        <h:inputText id="email" value="#{clientsBean.selectedClient.email}" required="true" />
+        <h:outputLabel for="phone" value="Phone:" />
+        <h:inputText id="phone" value="#{clientsBean.selectedClient.phone}" required="true" />
+        <h:outputLabel for="x" value="Position X:" />
+        <h:inputText id="x" value="#{clientsBean.selectedClient.position_x}" required="true" />
+        <h:outputLabel for="y" value="Position Y:" />
+        <h:inputText id="y" value="#{clientsBean.selectedClient.position_y}" required="true" />
+        <h:outputLabel for="shippingWindowStart" value="#{msg['order.shipping_window_start']}" />
+        <p:inputText id="shippingWindowStart" value="#{clientsBean.selectedClient.startTime}" required="true" pattern="HH:mm:ss" converter="localTimeConverter" />
+        <h:outputLabel for="shippingWindowEnd" value="#{msg['order.shipping_window_end']}" />
+        <p:inputText id="shippingWindowEnd" value="#{clientsBean.selectedClient.endTime}" required="true" pattern="HH:mm:ss" converter="localTimeConverter">
+        </p:inputText>
+    </ui:define>
+
+</ui:composition></html>

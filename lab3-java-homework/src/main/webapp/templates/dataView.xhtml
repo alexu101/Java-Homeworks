@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/page.xhtml">
+    <ui:define name="content">
+        <p:commandButton value="#{addEntityBtn}" icon="pi pi-plus" update="editDialog"
+                         actionListener="#{bean[newItem]}"
+                         oncomplete="PF('editDialog').show()"/>
+
+        <h:form id="dataForm">
+            <p:dataTable id="dataTable" value="#{itemList}" var="item"
+                         selectionMode="single"  selection="#{selectedItem}" rowKey="#{item.id}" scrollable="true">
+                <ui:insert name="columns">
+                    <!-- Default column configuration, to be overridden in specific pages -->
+                </ui:insert>
+            </p:dataTable>
+        </h:form>
+        <p:dialog id="editDialog" header="#{addEntityDialog}" widgetVar="editDialog" modal="true" resizable="false" closable="true">
+           <ui:insert name="editFile"/>
+
+        </p:dialog>
+
+
+    </ui:define>
+</ui:composition>
+</html>

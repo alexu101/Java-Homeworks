@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/page.xhtml">
+<ui:define name="content">
+    <h:form>
+        <p:panel header="Optimized Delivery Schedule" style="margin-bottom:20px">
+            <p:schedule id="schedule" value="#{scheduleBean.scheduleModel}"
+                        locale="en"
+                        aspectRatio="1.35"
+                        draggable="false"
+                        resizable="false">
+                <p:ajax event="eventSelect" listener="#{scheduleBean.onEventSelect}" update="eventDetails" />
+            </p:schedule>
+        </p:panel>
+
+        <p:dialog header="Delivery Details" widgetVar="eventDialog" showEffect="fade" hideEffect="fade">
+            <h:panelGrid id="eventDetails" columns="2" cellpadding="5">
+                <h:outputText value="Client:" />
+                <h:outputText value="#{scheduleBean.selectedEvent.title}" />
+
+                <h:outputText value="Start Time:" />
+                <h:outputText value="#{scheduleBean.selectedEvent.startDate}" />
+
+                <h:outputText value="End Time:" />
+                <h:outputText value="#{scheduleBean.selectedEvent.endDate}" />
+
+                <h:outputText value="Description:" />
+                <h:outputText value="#{scheduleBean.selectedEvent.description}" />
+            </h:panelGrid>
+        </p:dialog>
+    </h:form>
+</ui:define>
+</ui:composition>
+</html>
